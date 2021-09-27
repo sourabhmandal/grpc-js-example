@@ -1,0 +1,14 @@
+syntax = "proto3";
+package main;
+
+message GenericMessage {
+  string body = 1;
+  string language = 2;
+}
+
+service GenericService {
+  rpc unaryGeneric(GenericMessage) returns (GenericMessage) {}
+  rpc serverStreamGeneric(GenericMessage) returns (stream GenericMessage) {}
+  rpc clientStreamGeneric(stream GenericMessage) returns (GenericMessage) {}
+  rpc biDirectionStreamGeneric(stream GenericMessage) returns (stream GenericMessage) {}
+}
